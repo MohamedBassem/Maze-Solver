@@ -4,7 +4,7 @@ Maze-Solver
 A python script that takes a maze as an input and solves it.
 
 ### Installation
-Maze solver depend on [PIL](http://www.pythonware.com/products/pil/) and [Tkinter](https://wiki.python.org/moin/TkInter)
+Maze solver depends on [PIL](http://www.pythonware.com/products/pil/) and [Tkinter](https://wiki.python.org/moin/TkInter)
 
 ### Usage
 * run `python maze_solver.py <path/to/the/maze/image>`

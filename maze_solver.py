@@ -51,13 +51,11 @@ def bfs(start_i,start_j):
     Q.put( (start_i,start_j) )
     parent[(start_i,start_j)] = (-1,-1)
     vis[(start_i,start_j)] = 1
-    end = (-1,-1)
     while not Q.empty():
         curr = Q.get()
         i = curr[0]
         j = curr[1]
         if (i,j) == end_point :
-            end = (i,j)
             break
         if image_pixels[i,j] != ground_color :
             continue
@@ -69,12 +67,13 @@ def bfs(start_i,start_j):
                 vis[(i+d[0],j+d[1])] = 1
                 parent[(i+d[0] , j+d[1])] = (i,j)
                 Q.put( (i+d[0] , j+d[1]) )
-    if end == (-1,-1):
+    if end_point not in parent:
         return False
     else:
-        while end != (-1,-1):
-            image_pixels[end[0],end[1]] = path_color
-            end = parent[end]
+        curr = end_point
+        while curr != (-1,-1):
+            image_pixels[curr[0],curr[1]] = path_color
+            curr = parent[curr]
         return True
 
 def solve_maze():
@@ -83,7 +82,6 @@ def solve_maze():
     if not found :
         print "No Path Found"
     else:
-        canvas.delete("all")
         image_label = ImageTk.PhotoImage(maze)
         item = canvas.create_image(maze.size[0]//2, maze.size[1]//2, image=image_label)
         print "SOLVED !"

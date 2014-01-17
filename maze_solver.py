@@ -44,12 +44,6 @@ def callback(event):
     
 direction = [ (0,1) , (1,0) , (-1,0) , (0,-1) ]
 
-def findStart():
-    for i in range(maze.size[0]):
-        for j in range(maze.size[1]):
-            if image_pixels[i,j] == start_color :
-                return (i,j)
-
 def bfs(start_i,start_j):
     Q = Queue()
     vis = {}
